@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'Shophome' %}">My Awesome Cart</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'Shophome' %}">Home</a>
+        </li>
+        <li class="nav-item">
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'TrackingStatus' %}">Tracker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'bloghome' %}">Blog</a>
+        </li>
+        <li class="nav-item">
+        </li>
+      </ul>
+      <div class="d-flex m-1" role="search">
+        
+        <a class=" btn btn-primary" href="{% url 'AboutUs' %}">About Us</a>&nbsp;&nbsp;
+        <a class="btn btn-primary" href="{% url 'ContactUs' %}">Contact Us</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="d-flex m-1" role="search">
+        {% if not request.user.is_authenticated %}
+
+          <a class="btn btn-outline-success" href="{% url 'login' %}">Log in/Register</a>
+          {%else%}
+          <button class="btn btn-success rounded-circle ms-1" href="">{{request.user.username}}</button>&nbsp;&nbsp;
+          <a class="btn btn-primary" href="{% url 'logoutapp' %}">Logout</a>
+          {%endif%}
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

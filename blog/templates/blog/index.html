@@ -1,0 +1,35 @@
+{% extends 'shop/base.html' %}
+{% block body %}
+{% block head %}
+{% load static %}
+ <title>Blog</title> 
+ <link rel="stylesheet" href="{% static 'blog/index.css' %}"> 
+ {%endblock%}
+
+
+<div class="container text-center">
+  <header>
+    <h1>Home Blog</h1>
+    <main>
+      {% if blog %}
+      {% for blog in blog %}
+      <article>
+        <!-- {{blog.id}} -->
+        <h2>{{blog.title}}</h2><br>
+        <img src="/media/{{blog.image}}" height="400" width="400">
+        <p>{{blog.content|truncatewords:25 |safe}}</p>
+        <h4><a href="{% url 'blog_detail' blog.slug %}">See full blog</a></h4>
+        <p class="post-meta">Created At :- {{blog.created_at}}</p>
+      </article>
+      <br>
+      <hr><br><br>
+      {%endfor%}
+
+      {%else%}
+      <h1>No Blog Has Been Posted</h1>
+      {%endif%}
+
+
+
+</div>
+</main {%endblock%}

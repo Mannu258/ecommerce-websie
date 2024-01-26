@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'shop/base.html' %}
+{% block head %}
+{% load static %}
+ <title>Blog-details</title> 
+ <link rel="stylesheet" href="{% static 'blog/index.css' %}"> 
+ {%endblock%}
+
+{% block body%}
+
+{% if blog_obj %}
+{%for blog in blog_obj%}
+
+<div class="container text-center">
+    <article>
+        <h2>{{blog.title}}</h2><br>
+        <img src="/media/{{blog.image}}" height="800" width="800"><br><br><br>
+        <p>{{blog.content|safe}}</p>
+        <h3>Auther :- {{blog.user.username}}</h3>
+        <p class="post-meta">Created At :- {{blog.created_at}}</p>
+    </article>
+</div>
+</main>
+{%endfor%}
+{%else%}
+<h1>Not found</h1>
+{%endif%}
+{%endblock%}

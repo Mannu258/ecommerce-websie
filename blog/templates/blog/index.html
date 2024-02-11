@@ -2,9 +2,9 @@
 {% block body %}
 {% block head %}
 {% load static %}
- <title>Blog</title> 
- <link rel="stylesheet" href="{% static 'blog/index.css' %}"> 
- {%endblock%}
+<title>Blog</title>
+<link rel="stylesheet" href="{% static 'blog/index.css' %}">
+{%endblock%}
 
 
 <div class="container text-center">
@@ -15,11 +15,12 @@
       {% for blog in blog %}
       <article>
         <!-- {{blog.id}} -->
-        <h2>{{blog.title}}</h2><br>
-        <img src="/media/{{blog.image}}" height="400" width="400">
+        <h2><a class="display-1" href="{% url 'blog_detail' blog.slug %}">{{blog.title}}</a></h2><br>
+        <img src="/media/{{blog.image}}">
         <p>{{blog.content|truncatewords:25 |safe}}</p>
-        <h4><a href="{% url 'blog_detail' blog.slug %}">See full blog</a></h4>
+        <h4><a class="btn btn-success" href="{% url 'blog_detail' blog.slug %}">Read more..</a></h4><br>
         <p class="post-meta">Created At :- {{blog.created_at}}</p>
+        <br><br><br>
       </article>
       <br>
       <hr><br><br>
@@ -32,4 +33,23 @@
 
 
 </div>
+<script>
+  setInterval(function random() {
+    var h1 = document.querySelectorAll('h1')
+    var h2 = document.querySelectorAll('h2')
+    var p = document.querySelectorAll('p')
+
+    var x = Math.floor(Math.random() * 255);
+    var y = Math.floor(Math.random() * 255);
+    var z = Math.floor(Math.random() * 255);
+    var bgcolor = "rgb(" + x + "," + y + "," + z + ")";
+    var bgcolor2 = "rgb(" + z + "," + x + "," + x + ")";
+
+
+    h1[0].style.color = bgcolor
+
+
+
+  }, 800)
+</script>
 </main {%endblock%}

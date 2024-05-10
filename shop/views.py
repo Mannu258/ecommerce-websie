@@ -96,8 +96,8 @@ def register(request):
             return redirect('/register/')
         try:
             email = EmailMessage(
-                    subject='Order Received',
-                    body=f"Your One Time OTP is {OTP}",
+                    subject='OTP for Creating Myawesome Cart Account',
+                    body=f"Your One Time Password is {OTP}",
                     to=[f'{email2}']
 )   
             email.send()

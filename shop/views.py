@@ -86,6 +86,7 @@ def register(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         email = request.POST.get('email')
+        email2 = request.POST.get('email')
         name = request.POST.get('name')
         number = request.POST.get('number')
         print(username,password)
@@ -94,13 +95,12 @@ def register(request):
             messages.info(request,"Username Taken By another")
             return redirect('/register/')
         try:
-            print(OTP)
-#             email = EmailMessage(
-#                     subject='Order Received',
-#                     body=f"Your One Time OTP is {OTP}",
-#                     to=[f'{email2}']
-# )   
-#             email.send()
+            email = EmailMessage(
+                    subject='Order Received',
+                    body=f"Your One Time OTP is {OTP}",
+                    to=[f'{email2}']
+)   
+            email.send()
             return redirect('/shop/dashbord')
         except Exception as e:
             print(e)

@@ -1,7 +1,7 @@
 import random
 def otpgenerator():
     global otp
-    otp = int(random.randint(0000,9999))
+    otp = int(random.randint(1000,9999))
     return otp
 
 def otpverifier(OTP):

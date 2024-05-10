@@ -5,12 +5,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-
-
-
-
-
-# Create your views here.
+from django.core.mail import EmailMessage
+from .verifier import *
 
 
 # Create your views here.
@@ -84,30 +80,54 @@ def checkout(request,id):
 
 def register(request):
     if request.method =='POST':
+       
+        global username,password,email,name,number,OTP
+        OTP = otpgenerator()
         username = request.POST.get('username')
         password = request.POST.get('password')
         email = request.POST.get('email')
+        email2 = request.POST.get('email')
         name = request.POST.get('name')
         number = request.POST.get('number')
+        print(username,password)
         user = User.objects.filter(username = username)
         if user.exists():
             messages.info(request,"Username Taken By another")
             return redirect('/register/')
+        try:
+            email = EmailMessage(
+                    subject='Order Received',
+                    body=f"Your One Time OTP is {OTP}",
+                    to=[f'{email2}']
+)   
+            email.send()
+            return redirect('/shop/dashbord')
+        except Exception as e:
+            print(e)
+    return render(request,'registration/register.html')
 
-        user = User.objects.get_or_create(
-            username = username,
-            password = make_password(str(password)),
-        )
-        details = UserDetails.objects.get_or_create(
+def otpverify(request):
+    if request.method == 'POST':
+        otp = int(request.POST.get('OTP'))
+        print(otp , " " , OTP)
+        if otp == OTP:
+            details = UserDetails.objects.get_or_create(
             name = name,
             number = number,
             email = email,
             Username = username,
+        )        
+            user = User.objects.get_or_create(
+            username = username,
+            password = make_password(str(password)),
         )
-        messages.info(request,'Accounts Created SuccessFully Now You can login')
-        return redirect('/shop/')
-        # return HttpResponse('<h1>User Created Sucessfully</h1> <a href="/">Home</a>') 
-    return render(request,'registration/register.html')
+            messages.info(request,'Accounts Created SuccessFully Now You can login')
+            return redirect('/shop/')
+        else:
+            messages.info(request,'Wrong Otp Try again')
+            return redirect('/shop/dashbord')
+        
+    return render(request, 'registration/verify.html')
 
 @login_required
 def logout_user(request):

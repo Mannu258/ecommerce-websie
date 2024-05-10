@@ -1,0 +1,29 @@
+
+   {% extends 'shop/base.html' %}
+
+    {% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shop/register.css' %}">
+    <title>Register</title>
+    {%endblock%}
+
+    {%block body%}
+    <div class="alert alert-success text-center" role="alert">
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      
+<form method="post">
+    {%csrf_token%}
+    <div class=" input-group">
+        <label for="password">OTP:</label>
+        <input type="password" id="password" name="OTP" placeholder="Password">
+        <button class="btn btn-success" type="submit">Register</button>
+    </div>
+</form>
+{%endblock%}

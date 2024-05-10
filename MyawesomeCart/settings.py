@@ -24,7 +24,7 @@ import os
 SECRET_KEY = 'django-insecure-=j(hzbmty7a0yuzuc+r^#f448@0k#jw-2caeyjyy7kt+pxqv7!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG =False
 
 ALLOWED_HOSTS = ['*']
 
@@ -104,6 +104,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'jeemannu90@gmail.com'
+EMAIL_HOST_PASSWORD = 'cqep qxtj ijoy oaew '
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

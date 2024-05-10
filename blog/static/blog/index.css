@@ -1,6 +1,7 @@
 body {
-    background-image: url('https://images.unsplash.com/photo-1496661415325-ef852f9e8e7c?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-image: url('https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
 }
 h1{
@@ -8,4 +9,43 @@ h1{
 }
 h2{
     color: aliceblue;
+}
+*{
+    .crimson-text-regular {
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.crimson-text-semibold {
+  font-family: "Crimson Text", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.crimson-text-bold {
+  font-family: "Crimson Text", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.crimson-text-regular-italic {
+  font-family: "Crimson Text", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.crimson-text-semibold-italic {
+  font-family: "Crimson Text", serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.crimson-text-bold-italic {
+  font-family: "Crimson Text", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+color:#ffffff;
+
 }

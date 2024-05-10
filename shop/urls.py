@@ -10,6 +10,8 @@ urlpatterns = [
     path('search/', search,name='Search'),
     path('checkout/<int:id>', checkout,name='Checkout'),
     path('logout', logout_user ,name='logoutapp'),
+    path('dashbord', otpverify ,name='dashbord'),
+
 
 
 
